@@ -92,7 +92,42 @@ void loop() {
     delay(4000);
     count = 0;
     sum = 0;
+    count ++; 
   }
 }
 ```
+## IR sensor with arduino
+testing the IR sharp sensor with arduino to characterize the IR
+[datasheetGP2Y0A21YK.pdf](https://github.com/barbart/sensor-characterization-with-arduino-uno-/files/8833897/datasheetGP2Y0A21YK.pdf)
+[datasheet.pdf](https://github.com/barbart/sensor-characterization-with-arduino-uno-/files/8833900/datasheet.pdf)
 
+```
+int analogPin = A0;
+float sensorVal = 0;
+float sensorVolt = 0;
+float Vr=5.0;
+float sum=0;
+float k1=16.7647563;
+float k2=-0.85803107;
+float distance=0;
+void setup() {
+  Serial.begin(9600);
+   
+}
+ 
+void loop() {
+ 
+  sum=0;
+  for (int i=0; i<100; i++)
+  {
+    sum=sum+float(analogRead(analogPin));  
+  }
+  sensorVal=sum/100;
+  sensorVolt=sensorVal*Vr/1024;
+ 
+  distance = pow(sensorVolt*(1/k1), 1/k2);
+  Serial.println(distance);
+  delay(4000);
+}
+```
+    
