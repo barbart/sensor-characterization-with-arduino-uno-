@@ -130,4 +130,6 @@ void loop() {
   delay(4000);
 }
 ```
-    
+### Graph of IR sensor 
+![IRsensor graph](https://user-images.githubusercontent.com/105804562/172183956-d74ffff4-3d0f-44df-a5a6-4ed1abaf030a.png)
+
